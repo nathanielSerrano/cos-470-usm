@@ -62,7 +62,7 @@
 \end{itemize}
 
 % ----------------------------------------------------------------
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}[node distance=1.5cm and 2cm, auto]
         % Nodes
@@ -138,6 +138,10 @@ How do we know whether a model is good? For classification models, we use the fo
     \item First machine learning/AI algorithm, introduced by Frank Rosenblatt in 1957.
     \item The goal is to find a decision boundary or hyperplane to separate the data. There can be multiple decision boundaries.
     \item For non-linear decision boundaries, techniques like the kernel trick can be used to create a hyperplane.
+
+   \item[\textbf{Kernel Trick:}]  
+    The kernel trick enables the perceptron to operate in higher-dimensional spaces by replacing the standard dot product with a kernel function. This kernel function effectively computes the dot product in a transformed, higher-dimensional space without explicitly performing the transformation. It acts as a similarity measure between points, corresponding to a dot product in that space. The trick works because the perceptron decision function is based solely on dots between data points. By substituting a kernel function, the perceptron can classify data in a higher-dimensional space, where it might become linearly separable, without the computational expense of transforming the points directly.
+ 
     \item Assumptions:
     \begin{itemize}
         \item The data is linearly separable.
@@ -148,4 +152,51 @@ How do we know whether a model is good? For classification models, we use the fo
         \item $\mathcal{H}=\{x_i\mid w^Tx+b=0\}$ where $w$ is the vector of weights and $b$ is the bias and $b\in\mathbb{R}$.
         \item Goal is to find $w$ and $b$.
     \end{itemize}
+
+    \item Code example of perceptron:
+    \begin{minted}[fontsize=\small]{python}
+def perceptron(D, max_epochs=100):
+    """
+    Perceptron algorithm for binary classification.
+
+    Input:
+    - D: Training dataset, a list of tuples (x_i, y_i), where x_i is the feature vector 
+         and y_i is the label (-1 or 1).
+    - max_epochs: Maximum number of iterations over the dataset.
+
+    Output:
+    - w: Learned weight vector (including bias term).
+    """
+    
+    # Step 1: Initialize weight vector and bias to zero
+    n_features = len(D[0][0])  # Number of features in x_i
+    w = [0.0] * n_features  # Weight vector
+    b = 0.0  # Bias term
+    
+    # Step 2: Initialize misclassification counter
+    m = 1  # Assume at least one misclassification
+    
+    # Step 3: Iterate until no misclassifications or max_epochs reached
+    epoch = 0
+    while m > 0 and epoch < max_epochs:
+        m = 0  # Reset misclassification counter
+        
+        # Step 5: Iterate over all training examples
+        for x_i, y_i in D:
+            # Step 6: Check if the example is misclassified
+            # Compute the dot product w · x_i, add bias, and check if y_i * (w · x_i + b) <= 0
+            if y_i * (sum(w[j] * x_i[j] for j in range(n_features)) + b) <= 0:
+                # Step 7: Update weight vector and bias
+                for j in range(n_features):
+                    w[j] += y_i * x_i[j]
+                b += y_i
+                m += 1  # Increment misclassification counter
+        
+        epoch += 1
+    
+    # Bundle weights and bias into a single vector
+    w.append(b)  # Append bias as the last element of w
+    return w
+\end{minted}
+    
 \end{itemize}
