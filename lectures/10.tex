@@ -1,0 +1,134 @@
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% SUMMARY    : Optimization \& SVMs -- Class Notes
+%            : University of Southern Maine 
+%            : @james.quinlan
+%            : @abdirahman.mohamed
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{fullpage}
+\usepackage{enumitem} % for outlining
+
+\title{Optimization \& SVMs -- Class Notes}
+\author{[Abdirahman Mohamed]}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Objectives}
+\begin{outline}
+    \1 Understand monotonic functions and their properties.
+    \1 Learn the formulation of SVMs through maximum margin optimization.
+    \1 Study Lagrange multipliers in constrained optimization.
+    \1 Explore gradients, partial derivatives, and various gradient descent methods.
+\end{outline}
+
+\rule[0.0051in]{\textwidth}{0.00025in}
+% ----------------------------------------------------------------
+
+\section{Mathematics}
+
+\subsection{Monotonic Functions}
+\begin{itemize}
+    \item \textbf{Definition:} A function $f(x)$ is \emph{monotonic} if whenever 
+    \[
+    x_1 \leq x_2, \quad \text{then} \quad f(x_1) \leq f(x_2).
+    \]
+    \item \textbf{Takeaway:} Lower input values lead to lower output values.
+\end{itemize}
+
+\subsection{Maximum Margin in SVMs}
+\begin{itemize}
+    \item \textbf{Margin:} The margin is the “gap” between the decision boundary and the closest data points (support vectors).
+    \item \textbf{Goal:} Maximize the margin, which is equivalent to maximizing 
+    \[
+    \frac{1}{\|w\|}.
+    \]
+    \item \textbf{Alternate Forms:} Minimizing any of these differentiable forms is equivalent:
+    \begin{itemize}
+        \item $\|w\|$
+        \item $\|w\|^2$
+        \item $\frac{1}{2}\|w\|^2$
+    \end{itemize}
+    \item \textbf{Argmax/Argmin:} These return the $x$-value at which a function reaches its maximum or minimum.
+\end{itemize}
+
+\subsection{SVM Optimization Setup}
+\begin{itemize}
+    \item \textbf{Objective:}
+    \[
+    \min \frac{1}{2}\|w\|^2.
+    \]
+    \item \textbf{Constraints:} For every sample $(x_i, y_i)$, the constraint is
+    \[
+    y_i \bigl(w^T x_i + b\bigr) \geq 1,
+    \]
+    or equivalently,
+    \[
+    y_i \bigl(w^T x_i + b\bigr) - 1 \geq 0.
+    \]
+    \item \textbf{Note:} The weight vector $w$ can be viewed as a weighted sum of the support vectors.
+\end{itemize}
+
+\subsection{Lagrange Multipliers}
+\begin{itemize}
+    \item \textbf{Purpose:} Incorporate inequality constraints directly into the optimization problem.
+    \item \textbf{Method:} Multiply each constraint by a Lagrange multiplier $\alpha_i$ (with $\alpha_i \geq 0$):
+    \[
+    \alpha_i \bigl( y_i (w^T x_i + b) - 1 \bigr) \geq 0.
+    \]
+    \item \textbf{Lagrangian Formulation:} The optimization problem becomes:
+    \[
+    L(w, b, \alpha) = \frac{1}{2}\|w\|^2 - \sum_{i=1}^{n} \alpha_i \bigl( y_i (w^T x_i + b) - 1 \bigr).
+    \]
+\end{itemize}
+
+\subsection{Gradients \& Partial Derivatives}
+\begin{itemize}
+    \item \textbf{Gradient Vector:} For a function $f(x_1,x_2,\dots,x_m)$, the gradient is:
+    \[
+    \nabla f = \begin{bmatrix}
+    \frac{\partial f}{\partial x_1} \\
+    \frac{\partial f}{\partial x_2} \\
+    \vdots \\
+    \frac{\partial f}{\partial x_m}
+    \end{bmatrix}.
+    \]
+    \item \textbf{Example:} For $f(x,y) = x^2 + y^2$, we have:
+    \[
+    \frac{\partial f}{\partial x} = 2x, \quad \frac{\partial f}{\partial y} = 2y,
+    \]
+    so the gradient is:
+    \[
+    \nabla f = \begin{bmatrix} 2x \\ 2y \end{bmatrix}.
+    \]
+    \item \textbf{Another Example:} For $f(x,y) = x^2 y + e^x$, compute the partial derivatives similarly.
+\end{itemize}
+
+\subsection{Gradient Descent \& Its Variants}
+\begin{itemize}
+    \item \textbf{Core Idea:} After computing the gradient of the loss function, update the parameters (weights and biases) iteratively to minimize the loss.
+    \item \textbf{Variants:}
+    \begin{enumerate}[label=\arabic*.]
+        \item \textbf{Vanilla Gradient Descent:} Uses the full dataset to compute the gradient.
+        \item \textbf{Stochastic Gradient Descent (SGD):} Updates parameters using one sample at a time.
+        \item \textbf{Mini-batch Gradient Descent:} Uses a small batch of samples per update (each full pass through the data is called an epoch).
+        \item \textbf{Momentum:} Incorporates past gradients to smooth the updates.
+        \item \textbf{AdaGrad:} Adjusts the learning rate based on how frequently a parameter is updated.
+        \item \textbf{RMSProp:} A variant of AdaGrad that uses a moving average of squared gradients.
+        \item \textbf{Adam:} Combines Momentum and RMSProp for adaptive learning rates.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Quick Recap}
+\begin{itemize}
+    \item \textbf{Monotonic Functions:} Lower inputs yield lower outputs.
+    \item \textbf{SVM Objective:} Maximize the margin (or equivalently, minimize $\frac{1}{2}\|w\|^2$) while ensuring $y_i (w^T x_i + b) \geq 1$.
+    \item \textbf{Lagrange Multipliers:} Incorporate constraints using multipliers $\alpha_i$.
+    \item \textbf{Gradients:} Essential for updating weights in optimization.
+    \item \textbf{Gradient Descent Variants:} Various methods (SGD, mini-batch, Adam, etc.) are used depending on the dataset size and desired efficiency.
+\end{itemize}
+
+\end{document}
