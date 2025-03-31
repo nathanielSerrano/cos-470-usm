@@ -37,3 +37,7 @@ To work on your local machine or on a cloud based platform (e.g., Overleaf), you
 2. `packages.tex` (containing all the packages)
 3. `reference.bib` (bibTeX database)
 4. `lectures` directory.  Your notes should be in this directory and **NOT** contain document class, begin document or end document statements, but **ONLY** the notes you scribed.  The documentclass, etc. are contained in the control file.
+
+
+### Optional
+1. `code.tex` is optional.  It is for including code in your notes.  However, the verbatim environment works as well, in which you do not need the `code.tex`.
