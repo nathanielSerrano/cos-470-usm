@@ -28,7 +28,45 @@ The Norm function is $||\cdot|| : V \rightarrow \R^{+}$ such that:
 \end{enumerate}
 
 
-Let's do an example with the Hamming Distance equation to show how to apply these rules. To show that Hamming Distance is a norm function, it must satisfy all the properties. Which property doesn't the Hamming Distance satisfy? Hamming distance is the number of elements that are different between two vectors, therefore it doesn't fit rule 3. For instance, if the vectors are multiplied by 3, the result is not multiplied by 3. Therefore, Hamming Distance is NOT a norm function:
+Consider the following example.
+% ----------------------------------------------------------------
+\[
+d_H \left( \mathbf{{x}} = 
+\begin{bmatrix}
+    1 \\
+    0 \\
+    1 
+\end{bmatrix}, 
+\quad
+\mathbf{{y}} = 
+\begin{bmatrix}
+    0 \\
+    1 \\
+    1 \\
+\end{bmatrix} \right) = 2
+\]
+% ----------------------------------------------------------------
+
+The Hamming Distance must satisfy all properties in order to be considered a norm function. Consider if $x$ and $y$ were scaled by an arbitrarily chosen constant $3$.
+% ----------------------------------------------------------------
+\[
+d_H \left( \mathbf{{x}} = 
+\begin{bmatrix}
+    3 \\
+    0 \\
+    3 
+\end{bmatrix}, 
+\quad
+\mathbf{{y}} = 
+\begin{bmatrix}
+    0 \\
+    3 \\
+    3 \\
+\end{bmatrix} \right) = 2
+\]
+% ----------------------------------------------------------------
+
+The Hamming Distance returns the number of elements that differ between two vectors. The result remains the same despite scaling the vectors. Therefore, the Hamming Distance is \textbf{not} a Norm function as it does not meet the third criteria.
 
 \centering
 $d_{H}(Cx,Cy) \ne C \cdot d_{H}(x,y)$
@@ -80,7 +118,50 @@ The inner product is $\langle\cdot,\cdot\rangle: V \times V \rightarrow\R$ such 
 
 This is the basis of the neural networks. A few more aspects of the inner product are:
 
+\vspace{0.8em} 
+
 $\langle x,y \rangle = x^T y = \sum_{i=1}^{P}x_i y_i$
+
+\vspace{1em} 
+
+In the diagram below, the vector $x$ contains three input features, and each connection
+to the output node is weighted by a corresponding component of $y$. The output is the
+result of computing the dot product $\langle x, y \rangle$, and then adding a bias $b$. 
+This is the fundamental operation of a single neuron in a neural network.
+
+
+\begin{center}
+	\begin{minipage}[c]{0.35\textwidth}
+		\begin{align*}
+			x &= \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}
+		\end{align*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.6\textwidth}
+		\resizebox{!}{5cm}{
+			\begin{tikzpicture}
+				% Input nodes (features)
+				\node[circle, draw=black!80, inner sep=6pt] (x1) at (0,6) {$x_1$};
+				\node[circle, draw=black!80, inner sep=6pt] (x2) at (0,4) {$x_2$};
+				\node[circle, draw=black!80, inner sep=6pt] (x3) at (0,2) {$x_3$};
+
+				% Output node (prediction)
+				\node[rectangle, draw=black!80, inner sep=8pt] (output) at (6,4) {$<x,y> + b$};
+		
+				% Weights and connections
+				\draw[thick, ->] (x1) -- node[midway, above, sloped] {\(y_1\)} (output);
+				\draw[thick, ->] (x2) -- node[midway, above, sloped] {\(y_2\)} (output);
+				\draw[thick, ->] (x3) -- node[midway, above, sloped] {\(y_3\)} (output);
+		
+			\end{tikzpicture}
+		}
+	\end{minipage}
+\end{center}
+
+An important special case of the inner product occurs when a vector is dotted 
+with itself. This gives us the 2-norm, of the vector:
+
+\vspace{0.8em} 
 
 $||x|| = \sqrt{\langle x,x \rangle}$
 
