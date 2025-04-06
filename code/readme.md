@@ -2,7 +2,6 @@
 
 
 ![alt-text-1](gd1.gif "Gradient Descent 1") 
-
 ![alt-text-2](gd2.gif "Gradient Descent 2")
 
 <!--
