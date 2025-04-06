@@ -18,12 +18,12 @@
 The Perceptron is part of a family of machine learning algorithms known as \textit{supervised learning} algorithms.
 
 \subsection{Supervised vs Unsupervised Learning Algorithms}
-A \textit{supervised learning} algorithm is one which takes in labeled data, from which relationships between the desired output corresponding to the desired inputs are already known, from which the algorithm can make predictions on new, unlabeled data.
+A \textit{supervised learning} algorithm takes in labeled data, from which relationships between the desired output corresponding to the desired inputs are already known, from which the algorithm can make predictions on new, unlabeled data.
 
-Meanwhile, an \textit{unsupervised learning} algorithm is one that takes in unlabeled data, from which it is expected to find relationships and patterns among the data. For our purposes right now, let's focus on the different categories of \textit{supervised learning} algorithms.
+Meanwhile, an \textit{unsupervised learning} algorithm takes in unlabeled data, from which it is expected to find relationships and patterns among the data. For our current purposes, let's focus on the different categories of \textit{supervised learning} algorithms.
 
 \subsection{Types of Supervised Learning Algorithms}
-The two primary types of supervised learning algorithms are \textit{regression} algorithms, and \textit {classification} algorithms.
+The two primary types of supervised learning algorithms are \textit{regression} algorithms and \textit {classification} algorithms.
 
 \subsubsection{Regression Algorithms}
 Regression algorithms, given an input $x$, maps it to a $y$, such that
@@ -44,7 +44,7 @@ Coincidentally, the Perceptron algorithm belongs to this category. More specific
 \]
 
 \subsection{Perceptrons and Linear Separability}
-The Perceptron algorithm makes the assumption that data it takes in is \textit{linearly separable}.
+The Perceptron algorithm assumes that the data it takes in is \textit{linearly separable}.
 
 A set of data $D$, such that
 $
@@ -59,10 +59,10 @@ $ is \textit{linearly separable} if and only if one can draw a hyperplane betwee
 \] \[
     \forall x_i, y_i.
 \]
-Recall that it is the sign of $w^\perp x+b$ that tells us whether or not vector $x$ is 'above', 'below', or lying in the hyperplane. Assuming the hyperplane obtained via the Perceptron is a solution, then the sign should match the sign of the category, so if we were to multiply the category with the equation, we'll either be multiplying two positive or negative numbers together, and we should therefore always obtain a positive number.
+Recall that the sign of $w^\perp x+b$ tells us whether vector $x$ is `above', `below', or `on' the hyperplane. Assuming the hyperplane obtained via the Perceptron is a solution, then the sign should match the sign of the category, so if we were to multiply the category with the equation, we'll either be multiplying two positive or negative numbers together, and we should therefore always obtain a positive number.
 
 \subsection{The Set of all Decision Functions}
-Assuming that the set given to it is linearly separable, then the Perceptron algorithm is guaranteed to obtain \textit{a solution}, a hyperplane successfully splits the two classes. However, this solution is not guaranteed to be the \textit{optimal solution}, as we can see here. Consider the following dataset and decision boundary:
+Assuming that the set given to it is linearly separable, the Perceptron algorithm is guaranteed to obtain \textit{a solution}, a hyperplane that successfully splits the two classes. However, as we can see here, this solution is not guaranteed to be the \textit{optimal solution}. Consider the following dataset and decision boundary:
 
 \begin{tikzpicture}
 	\begin{axis}[
@@ -122,18 +122,18 @@ Meanwhile, this hyperplane splits the two halves of the feature space way more e
 \[
     h(x) = sign(w^\perp x+b).
 \]
-If the hyperplane is the set of all points such that $w^\perp x+b=0$, or, the set of all points in the hyperplane, then the sign of $w^\perp x+b$ when non-zero tells us whether or not we are 'above' or 'below' the plane, and as a result, which category we belong to. From this we can define the set of all possible decision functions,
+If the hyperplane is the set of all points such that $w^\perp x+b=0$, or, the set of all points in the hyperplane, then the sign of $w^\perp x+b$ when non-zero tells us whether or not we are 'above' or 'below' the plane, and as a result, which category we belong to. From this, we can define the set of all possible decision functions,
 \[
     H = \{h_1, h_2, \dots, h_n\}.
 \]
 
 \section{Introduction to SVM}
-As could be seen in the previous section, it appears that an 'optimal' hyperplane is one which maximizes the margin between the closest feature vector and the plane. To better maximize this margin, we'll introduce a new machine learning algorithm called the \textit{Support Vector Machine}, or \textit{SVM} for short.
+As the previous section shows, an 'optimal' hyperplane maximizes the margin between the closest feature vector and the plane. To better maximize this margin, we'll introduce a new machine learning algorithm called the \textit{Support Vector Machine}, or \textit{SVM} for short.
 
 The SVM is what is known as a \textit{maximum margin classifier}, which means that it is \textit{guaranteed} to find the maximum margin separating hyperplane, which is what we have decided to define as the most 'optimal' hyperplane for our purposes.
 
 \subsection{SVM Prerequisites}
-Before we delve into the specifics of the SVM algorithm, we need to define an important linear algebra operation: \textit{projection}.
+Before we delve into the specifics of the SVM algorithm, we must define an important linear algebra operation: \textit{projection}.
 
 In the most literal sense, 'projecting' one vector onto another gives us the magnitude of the first vector in the direction of another, as if you sat the first above the second in the same plane and shined a light over it- the projection is it's 'shadow' (like the example below).
 
@@ -143,9 +143,9 @@ In the most literal sense, 'projecting' one vector onto another gives us the mag
     \draw[red, ->] (0, 0) -- (1.5, 0);
 \end{tikzpicture}
 
-Let $u$ and $v$ be two vectors of some kind, and lets project the first onto the second. If a vector can be defined as a unit direction vector multiplied by some magnitude, we can take the direction of the resulting projection to be the unit vector of the vector we're projecting onto, $\hat{v}$ in this case.
+Let $u$ and $v$ be two vectors of some kind, and let us project the first onto the second. If a vector can be defined as a unit direction vector multiplied by some magnitude, we can take the direction of the resulting projection to be the unit vector of the vector we're projecting onto, $\hat{v}$ in this case.
 
-To obtain the magnitude, let us examine the definition for the dot product.
+To obtain the magnitude, let us examine the definition of the dot product.
 \[
     u \cdot v = |u||v|cos\theta
 \]
@@ -167,7 +167,7 @@ From this, we can also obtain the component of $u$ \textit{perpendicular} to $v$
 % ----------------------------------------------------------------
 
 \section{XPL's}
-1.) Modify perception code to add a counter to see how many updates it takes to obtain any solution.
+1.) Modify the perception code to add a counter to see how many updates it takes to obtain any solution.
 
 
 
