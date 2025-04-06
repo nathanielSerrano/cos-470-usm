@@ -26,14 +26,11 @@ function kNN(X,x,y,k,d = Euclidean())
   return yhat
 end
 
-
-# Load data
 iris = dataset("datasets", "iris")
 X = Matrix(iris[:, 1:4])'
 y = @. ifelse(iris.Species == "virginica", 1, -1)
 c = unique(y)
 
-# Train-test split
 Random.seed!(123)
 train, test = partition(1:size(X,2), 0.7, shuffle=true)
 Xtrain = X[:, train];
@@ -41,11 +38,9 @@ Xtest  = X[:, test];
 ytrain = y[train];
 ytest  = y[test];
 
-# Predictions
 yhat = map(i -> kNN(Xtrain, Xtest[:,i], ytrain, 1), 1:size(Xtest,2))
 c[argmax(map(i -> sum(yhat .== c[i]),1:lastindex(c)))]
 
-# Metrics
 accuracy = sum(yhat .== ytest) / length(ytest)
 precision = sum((yhat .== 1) .& (ytest .== 1)) / sum(yhat .== 1)
 recall = sum((yhat .== 1) .& (ytest .== 1)) / sum(ytest .== 1)
