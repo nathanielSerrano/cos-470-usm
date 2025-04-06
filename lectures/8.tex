@@ -160,7 +160,7 @@ Thus, there are infinitely many possible hyperplanes that can separate the data 
 
 In the hyperplane equation:
 \[
-w^T x + b = 0
+{\bf w}^T {\bf x} + b = 0
 \]
 we can bundle the bias term \( b \) as part of the input feature vector by augmenting it with a constant value. Specifically, we define the augmented feature vector:
 \[
@@ -178,7 +178,7 @@ w'^T x' = 0
 \section{Assumptions for the Perceptron Model}
 
 Data is Linearly Separable
-The data must be \textbf{linearly separable} for the perceptron model to work. This means that a linear hyperplane exists that can perfectly separate the data points belonging to different classes. 
+For the perceptron model to work, the data must be \textbf{linearly separable}. This means that a linear hyperplane exists that can perfectly separate the data points belonging to different classes. 
 
 \subsection{What is Linearly Separable?}
 For a dataset with inputs \( x_i \) and corresponding labels \( y_i \), where \( y_i \in \{-1, 1\} \), the data is said to be linearly separable if there exists a hyperplane represented by the equation \( w^T x + b = 0 \) such that for each data point:
@@ -201,12 +201,12 @@ Where:
  \( \mathbf{w} \) is the weight vector,
  \( \mathbf{x} \) is the input feature vector,
  \( b \) is the bias term, and
- \( \hat{y} \) is the predicted label (+1 or -1).
+ \( \hat{y} \) is the predicted label ($+1$ or $-1$).
 
 \subsection{Goal of Training}
 The objective of perceptron training is to find the optimal weight vector \( \mathbf{w} \) and bias \( b \) that minimize classification errors on the training set. 
 
-\section{Exercise: Check if \( \mathbf{u} = [3, -2, 1]^T \) belongs to the hyperplane}
+\section{Exercise: Check if \( {\bf u} = [3, -2, 1]^T \) belongs to the hyperplane}
 
 We are given:
 \[
@@ -231,7 +231,7 @@ Since the result is \( 0 \), this means that \( \mathbf{u} = [3, -2, 1]^T \) lie
     \item For any point \( \mathbf{x}_0 \) on the hyperplane, it satisfies the equation \( \mathbf{w}^T \mathbf{x}_0 + b = 0 \).
     \item Now, if you take any vector \( \mathbf{v} \) that lies on the hyperplane (i.e., any vector \( \mathbf{v} \) such that the line formed by \( \mathbf{x}_0 + \mathbf{v} \) also lies on the hyperplane), the following condition must hold:
     \[
-    \mathbf{w}^T (\mathbf{x}_0 + \mathbf{v}) + b = 0
+    {\bf w}^T ({\bf x}_0 + {\bf v}) + b = 0
     \]
     Since \( \mathbf{x}_0 \) lies on the hyperplane, \( \mathbf{w}^T \mathbf{x}_0 + b = 0 \). Therefore, the equation simplifies to:
     \[
@@ -253,49 +253,44 @@ Where:
 \( b \) is the bias term,
 \( \text{sign}(\cdot) \) is the sign function, which outputs \( +1 \) if the input is positive and \( -1 \) if the input is negative.
 
-\begin{itemize}
-    \item \textbf{Algorithm Finds \( \mathbf{w} \) and \( b \) Based on Training Data:} 
+\begin{outline}
+    \1 \textbf{Algorithm Finds \( \mathbf{w} \) and \( b \) Based on Training Data:} 
     During the training phase, the algorithm adjusts the weight vector \( \mathbf{w} \) and bias \( b \) based on the labeled training data. 
     The goal is to find values for \( \mathbf{w} \) and \( b \) that minimize classification errors and effectively separate the data points into their respective classes. 
     The training process involves optimizing the parameters based on the data's features and labels.
 
-    \item \textbf{Classifying New Data:} 
+    \1 \textbf{Classifying New Data:} 
     For new, unseen data, the classifier uses the learned values of \( \mathbf{w} \) and \( b \) to make a prediction. 
     The new data point \( \mathbf{x} \) is classified by evaluating the equation:
     \[
     h(x) = \text{sign}(\mathbf{w}^T \mathbf{x} + b)
     \]
-    \begin{itemize}
-        \item If \( \mathbf{w}^T \mathbf{x} + b > 0 \), then the classifier predicts class \( +1 \).
-        \item If \( \mathbf{w}^T \mathbf{x} + b < 0 \), then the classifier predicts class \( -1 \).
-    \end{itemize}
-\end{itemize}
+        \2 If \( \mathbf{w}^T \mathbf{x} + b > 0 \), then the classifier predicts class \( +1 \).
+        \2 If \( \mathbf{w}^T \mathbf{x} + b < 0 \), then the classifier predicts class \( -1 \).
+\end{outline}
 
 \section{Class Code(Perceptron Algorithm Steps)}
 
-\begin{itemize}
-    \item \textbf{Input:} A dataset \( D = \{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\} \), where \( x_i \) is the feature vector and \( y_i \in \{-1, 1\} \) is the label for each data point.
-    \item \textbf{Output:} The learned weight vector \( w \) and bias \( b \).
-    \item \textbf{Initialize:} 
+\begin{outline}
+    \1 \textbf{Input:} A dataset \( D = \{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\} \), where \( x_i \) is the feature vector and \( y_i \in \{-1, 1\} \) is the label for each data point.
+    \1 \textbf{Output:} The learned weight vector \( w \) and bias \( b \).
+    \1 \textbf{Initialize:} 
     \[
     w = \mathbf{0} \quad \text{(weight vector initialized to zero)}, \quad b = 0 \quad \text{(bias initialized to zero)}.
     \]
-    \item \textbf{Algorithm Steps:}
+    \1 \textbf{Algorithm Steps:}
     \begin{enumerate}
-        \item Set \( m = 1 \) (initially assuming there are misclassifications).
-        \item \text{While } \( m > 0 \) \text{ (until no misclassifications)}:
-        \begin{enumerate}
-            \item Set \( m = 0 \) (assume no misclassifications for this iteration).
-            \item For each data point \( i = 1 \) to \( n \):
-            \begin{itemize}
-                \item If \( y_i (w^T x_i + b) \leq 0 \) (the point is misclassified):
-                \item Update the weight vector: 
+        \2[1.] Set \( m = 1 \) (initially assuming there are misclassifications).
+        \2[2.] \text{While } \( m > 0 \) \text{ (until no misclassifications)}:
+        
+            \3[a. ] Set \( m = 0 \) (assume no misclassifications for this iteration).
+            \3[b. ] For each data point \( i = 1 \) to \( n \):
+            
+                \4[] If \( y_i (w^T x_i + b) \leq 0 \) (the point is misclassified):
+                \4 Update the weight vector: 
                 \[
                 w = w + y_i x_i
                 \]
-                \item Increment the misclassification count: \( m = m + 1 \)
-            \end{itemize}
-        \end{enumerate}
-    \end{enumerate}
-\end{itemize}
+                \4 Increment the misclassification count: \( m = m + 1 \)
+\end{outline}
 \end{minted}
