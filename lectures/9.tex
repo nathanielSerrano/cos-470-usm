@@ -18,16 +18,16 @@
 
 
 \section{Regression}
-The previous lectures and materials have mostly covered classification tasks. As we know, classification can be binary where there are two (2) labels: 
+The previous lectures and materials have mostly covered classification tasks. As we know, classification can be binary, where there are two (2) labels: 
 \[
 y \in \{-1, 1\}
 \]
 
-Though, classification tasks can contain $x\mathbb{\in Z^+}$ labels. In a small example, the Iris dataset has three (3) different labels representing the Iris flowers setosa, versicolor, and virginica.
+Though, classification tasks can contain $x\mathbb{\in Z^+}$ labels. In a small example, the Iris dataset has three (3) different labels representing the Iris flowers: setosa, versicolor, and virginica.
 \[
 y \in \{1, 2, 3\}
 \]
-\textbf{Regression} has the same goal of ``labeling'' features, but not categorically and instead with real numbers.
+\textbf{Regression} has the same goal of ``labeling'' features, but not categorically, and instead with real numbers.
 \[
 y \in \mathbb{R}
 \]
@@ -110,7 +110,7 @@ Here are the names of some notable gradient descent methods:
     \1 \textbf{Binary Classification} Task
     \1 Assumes data is \textbf{Linearly Separable}
     \1 Calculates weight vector $\vec{w}$ and bias $b$ 
-    \1 ``Bundle \& Save'': This trick will save time by removing the need to calculate $b$. We do this by "bundling" $b$ into $\vec{w}$: 
+    \1 ``Bundle \& Save'': This trick will save time by removing the need to calculate $b$. We do this by ``bundling" $b$ into $\vec{w}$: 
     \begin{align*}
     \vec{w} &= \begin{bmatrix}
            w_{1}    \\
