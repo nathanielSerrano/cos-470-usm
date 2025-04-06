@@ -1,8 +1,8 @@
 # Gradient Descent Visualization
 
 <div style="display: flex;">
-  <img src="gd1.gif" width="400">
-  <img src="gd2.gif" width="400">
+  <img src="gd1.gif" >
+  <img src="gd2.gif" >
 </div>
 
 <!--
