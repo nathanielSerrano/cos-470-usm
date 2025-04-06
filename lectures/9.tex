@@ -65,7 +65,7 @@ In this cost function, the higher the value the more loss the model has. Simply 
 \[ 
 \text{Cost}=\sum_{i=1}^{n} |y_i - \hat{y_i}|
 \]
-The downside of the absolute loss function is that it is not \textbf{differentiable}. Recall that differentiable means there exists a derivative.
+The downside of the absolute loss function is that it is not \textbf{differentiable}. Recall that differentiable means a derivative exists.
 
 \subsection{Square Loss}
 Square loss takes the actual label associated with the feature $y_i$ and squares its difference with the computed $\hat{y_i}$ label value.
@@ -75,10 +75,10 @@ Square loss takes the actual label associated with the feature $y_i$ and squares
 \[ 
 \text{Cost}=\sum_{i=1}^{n} (y_i - \hat{y_i})^2
 \]
-Because this loss function squares its result, it can be sensitive to outliers. However, because it is differentiable, it is often preferred over the absolute loss function.
+Because this loss function squares its result, it can be sensitive to outliers. However, it is often preferred over the absolute loss function because it is differentiable.
 
 \subsection{Objective Function}
-Recall that we covered how a \textbf{Cost} function is the aggregation of a \textbf{Loss} function.
+Recall that we covered how a \textbf{Cost} function aggregates a \textbf{Loss} function.
 \[ 
 \text{Cost}=\sum_{i=1}^{n} \text{Loss}
 \]
@@ -86,10 +86,10 @@ Similarly, there is another function known as the \textbf{Objective Function} wh
 \[ 
 \text{Objective Function}=\text{Cost} + \text{Regularizer}
 \]
-The purpose of the regularizer is to add a penalty to shrink a coefficient, or in other words, to minimize the loss function. This can be helpful for loss functions like square loss as it is sensitive to outliers and can compute unexpectedly large coefficients.
+The purpose of the regularizer is to add a penalty to shrink a coefficient, or in other words, to minimize the loss function. This can be helpful for loss functions like square loss, which is sensitive to outliers and can compute unexpectedly large coefficients.
 
 \subsection{Gradient Descent}
-Gradient descent is essentially a use case for calculating derivatives. Its purpose in Supervised Machine Learning (ML) tasks is to find local minimum and maximums (where the derivative is 0) in order to optimize the loss function of a model. 
+Gradient descent is essentially a use case for calculating derivatives. In supervised Machine Learning (ML) tasks, its purpose is to find global minimums (where the derivative is 0) to optimize a model's loss function. 
 
 Here are the names of some notable gradient descent methods:
 \begin{outline}
@@ -155,7 +155,7 @@ end
 \section{Practice Problems}
 
 \begin{outline}[enumerate]
-    \1 What is the benefit of having less dimensions, features, or components in your vectors?
+    \1 What is the benefit of having fewer dimensions, features, or components in your vectors?
     \1 What are the different types of Supervised ML?
     \1 What is a loss function?
     \1 What is KNN? How could it be used differently for both Classification and Regression?
