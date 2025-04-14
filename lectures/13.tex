@@ -174,12 +174,17 @@ But here's our issue: we don't know what $Q$ is. Additionally, taking the invers
 The iterative method is defined by the \textbf{update rule}:
 
 \begin{equation}
-    \alpha_{new} = \alpha_{old} - \eta \nabla L (\alpha_{old})
+    \alpha_{\text{new}} = \alpha_{\text{old}} - \eta \nabla L(\alpha_{\text{old}})
 \end{equation}
+where:
+\begin{itemize}
+    \item \( \alpha_{\text{new}} \): Updated value of the parameter vector \( \boldsymbol{\alpha} \),
+    \item \( \alpha_{\text{old}} \): Current value of the parameter vector \( \boldsymbol{\alpha} \),
+    \item \( \eta \) (eta): Learning rate, a hyperparameter controlling the step size, typically set to values like 0.1 or 0.01,
+    \item \( \nabla L(\alpha_{\text{old}}) \): Gradient of the loss function \( L \) with respect to \( \boldsymbol{\alpha} \) at \( \alpha_{\text{old}} \).
+\end{itemize}
 
-where $L$ is our loss function and $\eta$ is a hyper-parameter representing the learning rate, often set to $0.1$ or $0.01$. Recall that our goal is always to minimize loss for maximum accuracy. 
-
-The second term, $[\eta \nabla L (\alpha_{old})]$, is subtracted from the equation because we want to step in the direction that will \textit{minimize} the loss function. Let's see an example of a convex quadratic loss function:
+The goal is to minimize the loss function \( L \) to achieve maximum accuracy. The learning rate \( \eta \) is critical: a value too large may cause overshooting, while a value too small may lead to slow convergence. Now let's see an example of a convex quadratic loss function:
 
 \begin{center}
 \begin{tikzpicture}[scale=0.7]
