@@ -91,19 +91,26 @@ The purpose of the regularizer is to add a penalty to shrink a coefficient, or i
 \subsection{Gradient Descent}
 Gradient descent is essentially a use case for calculating derivatives. In supervised Machine Learning (ML) tasks, its purpose is to find global minimums (where the derivative is 0) to optimize a model's loss function. 
 
+
 Here are the names of some notable gradient descent methods:
 \begin{outline}
-    \1 Vinalla
+    \1 Vanilla
     \1 Stochastic
     \1 Minibatch
     \1 Hession
     \1 Momentum
 
 \end{outline}
+\subsubsection{Learning Rate}
+Gradient descent algorithms are based on learning rate. A good starting point for learning rate is 0.01 or 0.001:
+\begin{itemize}
+    \item Too large: Overshoots minima.
+    \item Too small: Slow convergence.
+\end{itemize}
 % ----------------------------------------------------------------
 \section{Lectures 1-7 Review}
 
-\subsection{The Perceptron}
+\subsection{The Perceptron\cite{rosenblatt1958perceptron}}
 % List of quick facts %
 \begin{outline}
     \1 Developed by \textbf{Rosenblatt} in \textbf{1957} at Cornell University
@@ -121,6 +128,7 @@ Here are the names of some notable gradient descent methods:
          \end{bmatrix} \\
     \end{align*}
     \1 $\vec{w} \in \mathcal{H}$ where $\mathcal{H}$ is the \textbf{Decision Boundary} or \textbf{Hyperplane}
+    
 \end{outline}
 
 \[
@@ -128,7 +136,8 @@ Here are the names of some notable gradient descent methods:
 \]
 
 
-\subsection{KNN}
+
+\subsection{KNN\cite{guo2003knn}}
 \begin{outline}
     \1 Stands for \textbf{$k$ Nearest Neighbors}
     \1 Loops over all neighbors and calculates distance
@@ -162,3 +171,5 @@ end
     \1 What does SVM stand for? What is its purpose?
     \1 What is the definition of a distance function? Give examples.
 \end{outline}
+\bibliographystyle{plain}
+\bibliography{references}
