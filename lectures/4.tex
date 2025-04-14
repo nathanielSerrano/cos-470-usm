@@ -18,7 +18,7 @@
 \rule[0.0051in]{\textwidth}{0.00025in}
 % ----------------------------------------------------------------
 
-\section{K-Nearest Neighbors (KNN)}
+\section{K-Nearest Neighbors (KNN)\cite{guo2003knn}}
 
 \textbf{KNN} is an algorithm that can be use for Regression and Classification tasks. Its function is to classify new data points
 by checking what is nearby them as its names indicate.
@@ -531,3 +531,5 @@ c = unique(y)
 # Find the most frequent class label in y (this is mode technically)
 c[argmax(map(i -> sum(y .== c[i]), 1:lastindex(c)))]
 \end{minted}
+\bibliographystyle{plain}
+\bibliography{references}

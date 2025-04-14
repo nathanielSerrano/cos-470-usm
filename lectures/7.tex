@@ -15,7 +15,7 @@
 % ----------------------------------------------------------------
 
 \section{Perceptrons Continued}
-The Perceptron is part of a family of machine learning algorithms known as \textit{supervised learning} algorithms.
+The Perceptron\cite{rosenblatt1958perceptron} is part of a family of machine learning algorithms known as \textit{supervised learning} algorithms.
 
 \subsection{Supervised vs Unsupervised Learning Algorithms}
 A \textit{supervised learning} algorithm takes in labeled data, from which relationships between the desired output corresponding to the desired inputs are already known, from which the algorithm can make predictions on new, unlabeled data.
@@ -127,8 +127,14 @@ If the hyperplane is the set of all points such that $w^\perp x+b=0$, or, the se
     H = \{h_1, h_2, \dots, h_n\}.
 \]
 
+\subsection{Limitations of perceptron}
+\begin{itemize}
+    \item Fails on non-linearly separable data.
+    \item Single-layer only.
+\end{itemize}
+
 \section{Introduction to SVM}
-As the previous section shows, an 'optimal' hyperplane maximizes the margin between the closest feature vector and the plane. To better maximize this margin, we'll introduce a new machine learning algorithm called the \textit{Support Vector Machine}, or \textit{SVM} for short.
+As the previous section shows, an 'optimal' hyperplane maximizes the margin between the closest feature vector and the plane. To better maximize this margin, we'll introduce a new machine learning algorithm called the \textit{Support Vector Machine}\cite{scholkopf2002learning}\cite{vapnik1998statistical}, or \textit{SVM} for short.
 
 The SVM is what is known as a \textit{maximum margin classifier}, which means that it is \textit{guaranteed} to find the maximum margin separating hyperplane, which is what we have decided to define as the most 'optimal' hyperplane for our purposes.
 
@@ -269,3 +275,7 @@ From this, we can also obtain the component of $u$ \textit{perpendicular} to $v$
     \caption{Illustration of a one step update using Algorithm \ref{alg:perceptron}.  (a) The hyperplane defined by ${\bf w}$ misclassifies one hollow circle and one filled circle. (b) Hyperplane is updated since ${\bf x}_i$ was misclassified. (c) Updated hyperplane, ${\bf w} + y_i{\bf x}_i$, that separates the two classes.}
     \label{fig:perceptron}
 \end{figure}
+
+\pagebreak
+\bibliographystyle{plain}
+\bibliography{references}

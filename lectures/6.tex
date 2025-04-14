@@ -29,7 +29,7 @@
 \end{center}
 % ----------------------------------------------------------------
 
-\subsection*{1. K-Nearest Neighbors (KNN) Review}
+\subsection*{1. K-Nearest Neighbors\cite{guo2003knn} (KNN) Review}
 \begin{outline}
     \1 Pick $k$-nearest neighbors.
     \1 Easy, intuitive, and effective.
@@ -133,7 +133,7 @@ How do we know whether a model is good? For classification models, we use the fo
 \subsection*{2. Perceptron Algorithm}
 
 \begin{outline}
-    \1 First machine learning/AI algorithm, introduced by Frank Rosenblatt in 1957.
+    \1 First machine learning/AI algorithm, introduced by Frank Rosenblatt in 1957\cite{rosenblatt1958perceptron}.
     \1 The goal is to find a decision boundary or hyperplane to separate the data. There can be multiple decision boundaries.
     \1 For non-linear decision boundaries, techniques like the kernel trick can be used to create a hyperplane.
 
@@ -209,3 +209,5 @@ def perceptron(D, max_epochs=100):
         \2 $\mathcal{H}=\{x_i\mid w^Tx+b=0\}$ where $w$ is the vector of weights and $b$ is the bias and $b\in\mathbb{R}$.
         \2 Goal is to find $w$ and $b$.
 \end{outline}
+\bibliographystyle{plain}
+\bibliography{references}
