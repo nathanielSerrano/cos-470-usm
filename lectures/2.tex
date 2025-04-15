@@ -27,6 +27,19 @@ The Norm function is $||\cdot|| : V \rightarrow \R^{+}$ such that:
 	\item $||x+y|| \leq ||x|| + ||y||$
 \end{enumerate}
 
+\begin{tikzpicture}[scale=0.5]
+    \node[align=center, font=\bfseries] at (0,5) {Visual Representation of Spaces};
+    \draw (0,0) circle (4cm); 
+    \draw (0,0) circle (2.5cm);
+    \draw (0,0) circle (1.2cm);
+    \node at (-7,3) (metricLabel) {Metric space};
+    \node at (-7, 2) (hammingLabel) {Hamming distance};
+    \draw[->] (hammingLabel) -- (-2.5,2);
+    \node at (-7,1) (normedLabel) {Normed space};
+    \draw[->] (normedLabel) -- (-1.5,1);
+    \node at (-7,0) (innerLabel) {Inner product space};
+    \draw[->] (innerLabel) -- (-0.5,0);
+\end{tikzpicture}
 
 Consider the following example.
 % ----------------------------------------------------------------
@@ -229,16 +242,19 @@ $b_\perp$ is perpendicular to $a$. It is also know as the residual and is equal 
 It is also important to note that $b = b_\| + b_\perp$ and that $\langle b_\| , b_\perp \rangle = 0$ we use all of these definitions and the inner product to solve it.
 
 \begin{align*}
-	0 &= \langle ca, b-ca \rangle \\
-	0 &= (ca)^T(b-ca) \\
-	0 &= ca^T (b-ca) \\
-	0 &= ca^Tb-c^2a^Tb \\
-	ca^Ta  &= a^Tb \\
-	c &= \frac{a^Tb}{a^Ta} \\
-	c &= \frac{\langle a,b \rangle}{\langle a,a \rangle} \\
-	ca &=  (\frac{a^Tb}{a^Ta})a 
- 	p &=   (\frac{a^Tb}{a^Ta})a
+    \langle b_{\parallel}, b_{\perp} \rangle &= 0 \\
+    \\
+    \langle b_{\parallel}, b_{\perp} \rangle &= \langle ca, b-ca \rangle \\
+    &= (ca)^T(b-ca) \\
+    &= ca^T (b-ca) \\
+    &= ca^Tb-c^2a^Ta \\ 
+    ca^Tb-c^2a^Ta &= 0 \\
+    c^2a^Ta  &= ca^Tb \\
+    ca^Ta  &= a^Tb \\
+    c &= \frac{a^Tb}{a^Ta} \\
+    &= \frac{\langle a,b\rangle}{\langle a,a\rangle} \\
+    ca &= \frac{\langle a,b\rangle}{\langle a,a\rangle} a \\
+    P &= ca
 \end{align*}
 
 All of this allows you to project $b$ onto $a$.
-

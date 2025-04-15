@@ -9,10 +9,10 @@
     \1 K-Nearest Neighbors (KNN)
     \1 Regression
     \1 Scale Data
-    \1 ``Homework" Problems
     \1 Outline for KNN algorithm
     \1 Classifier Function
     \1 Class Code
+    \1 XPLs
 \end{outline}
 
 \rule[0.0051in]{\textwidth}{0.00025in}
@@ -28,7 +28,7 @@ $Data = \{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\}$
 
 where $x \in \mathbb{R}^p$
 
-They look like a set of pairs where $x$ represent the features, while $y$ is the label that belongs to $x$.
+Each $(x,y)$ pair is made of $x$: the features, and $y$: the label.
 
 In the classification case, $y$ is a discrete label, and in the regression case, $y$ is a real number.
 
@@ -242,17 +242,6 @@ For example, we have values that ranges from $2$ to $10$, then we would want to 
 
 As we can see in the graph, we mapped $2$ to $0$, and $10$ to $1$, and they can be denoted by the solid lines,
 while the dashed lines represent a number in between $2$ and $10$ that connects to a value in between $0$ and $1$.
-
-\end{outline}
-
-\section{Exploration (XPL) Problems}
-\begin{outline}[enumerate]
-
-    \1  Code the Standardize Scaler formula. \\
-
-    \1  Write down the formula for linear transformation, and then code it. e.g.$[2,10]$ $\rightarrow$ $[0,1]$ and anything in between.\\
-
-    \1 Write a linear transformation that maps $[a,b]$ to $[c,d]$ (draw a line for them). \\
 
 \end{outline}
 
@@ -531,5 +520,15 @@ c = unique(y)
 # Find the most frequent class label in y (this is mode technically)
 c[argmax(map(i -> sum(y .== c[i]), 1:lastindex(c)))]
 \end{minted}
+
+\section{Explorations}
+\begin{outline}
+    \1  Code the Standardize Scaler formula. \\
+    \1  Write down the formula for linear transformation, and then code it. e.g.$[2,10]$ $\rightarrow$ $[0,1]$ and anything in between.\\
+    \1 Write a linear transformation that maps $[a,b]$ to $[c,d]$ (draw a line for them). \\
+    
+
+\end{outline}
+
 \bibliographystyle{plain}
 \bibliography{references}
