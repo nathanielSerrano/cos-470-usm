@@ -1,9 +1,8 @@
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 % SUMMARY    : Introduction of Perceptron and the Hyperplane
 %            : University of Southern Maine 
-%            : @mandy.ho
-%            : Lecture
-%            : 2025/02/24
+%            : @james.quinlan
+%            : Mandy Ho - Lecture 6
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 % ----------------------------------------------------------------
@@ -47,7 +46,7 @@
             \3 Grid search
 \end{outline}
 
-\subsection*{Cross-Validation}
+\subsection*{Cross-Validation\cite{Kohavi1995ASO}}
 \begin{outline}
     \1 What determines the split? The amount of data you have.
     \1 Most common splits are 80/20 or 70/30.
@@ -137,8 +136,12 @@ How do we know whether a model is good? For classification models, we use the fo
     \1 The goal is to find a decision boundary or hyperplane to separate the data. There can be multiple decision boundaries.
     \1 For non-linear decision boundaries, techniques like the kernel trick can be used to create a hyperplane.
 
-   \1[\textbf{Kernel Trick:}]  
-    The kernel trick enables the perceptron to operate in higher-dimensional spaces by replacing the standard dot product with a kernel function. This kernel function effectively computes the dot product in a transformed, higher-dimensional space without explicitly performing the transformation. It acts as a similarity measure between points, corresponding to a dot product in that space. The trick works because the perceptron decision function is based solely on dots between data points. By substituting a kernel function, the perceptron can classify data in a higher-dimensional space, where it might become linearly separable, without the computational expense of transforming the points directly.
+    \1\textbf{Kernel Trick:} The kernel trick enables the perceptron to operate in higher-dimensional spaces by replacing the standard dot product with 
+    a kernel function. This kernel function effectively computes the dot product in a transformed, higher-dimensional space without 
+    explicitly performing the transformation. It acts as a similarity measure between points, corresponding to a dot product in that 
+    space. The trick works because the perceptron decision function is based solely on dots between data points. By substituting a kernel 
+    function, the perceptron can classify data in a higher-dimensional space, where it might become linearly separable, without the computational 
+    expense of transforming the points directly.
  
     \1 Assumptions:
     
@@ -209,5 +212,11 @@ def perceptron(D, max_epochs=100):
         \2 $\mathcal{H}=\{x_i\mid w^Tx+b=0\}$ where $w$ is the vector of weights and $b$ is the bias and $b\in\mathbb{R}$.
         \2 Goal is to find $w$ and $b$.
 \end{outline}
-\bibliographystyle{plain}
-\bibliography{references}
+
+\section{Exploration (XPL) Problems}
+\begin{outline}[enumerate]
+
+    \1  Is it possible to have 100\% Sensitivity? \\
+    \1  For multiple values of $\beta$, determine $\beta$'s effect on the $F_\beta$ score.\\
+
+\end{outline}
