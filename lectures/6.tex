@@ -49,15 +49,15 @@
     \1 $k$ is a hyperparameter:
         \2 A hyperparameter is not learned or trained by the model.
         \2 You select the ``best" $k$ by tuning and training models on various different values of $k$.
-        \2 Examples:
-            \3 Cross-validation
-            \3 Grid search
+        \2 Hyperparameter tuning methods:
+            \3 \textbf{Cross-validation}: This method is used to measure how well a model performs on a dataset. Divide your dataset into subsets for training and validation/testing. Typically, cross-validation checks the average of multiple validation sets for a more accurate evaluation.
+            \3 \textbf{Grid search}: Suppose you have two hyper-parameters, $a$ and $b$, that you want to train your model with. Define a grid with values of $a$ on one axis and values of $b$ on the other. The model then trains on each combination of $a$ and $b$ in the grid to determine the optimal combination. 
 \end{outline}
 
 \subsection*{Cross-Validation\cite{Kohavi1995ASO}}
 \begin{outline}
     \1 What determines the split? The amount of data you have.
-    \1 Most common splits are 80/20 or 70/30.
+    \1 Most common split is 80/20, with 80\% of the dataset used for training and the remaining 20\% used for validation/testing. Other common splits are 70/30, 60/40, and 90/10. 
     \1 The more training data you have, the better the model performance.
 \end{outline}
 
@@ -140,7 +140,7 @@ How do we know whether a model is good? For classification models, we use the fo
 \subsection*{2. Perceptron Algorithm}
 
 \begin{outline}
-    \1 First machine learning/AI algorithm, introduced by Frank Rosenblatt in 1957\cite{rosenblatt1958perceptron}.
+    \1 First machine learning/AI algorithm, introduced by Frank Rosenblatt in 1957 at Cornell University\cite{rosenblatt1958perceptron}.
     \1 The goal is to find a decision boundary or hyperplane to separate the data. There can be multiple decision boundaries.
     \1 For non-linear decision boundaries, techniques like the kernel trick can be used to create a hyperplane.
 
