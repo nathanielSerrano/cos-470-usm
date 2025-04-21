@@ -7,7 +7,11 @@ With identity activation, da/dz = 1.
 ---- =  ---- . ---- . ----  (Chain Rule)
  dw      da     dz     dw
 
+
+@Julia: 1.11.5
+@Author: james.quinlan
 """
+
 σ(z) = z; # 1 / (1 + exp(-z))
 C(a) = (a - y)^2
 dcda(a) = 2*a - 1
