@@ -15,7 +15,7 @@
 
 Continuing from the previous lecture, we have the equation:
 
-\begin{equation}
+\begin{equation} \label{eq:1}
 f(\alpha) = \sum\limits_{i=1}^{n} \alpha_i - \frac{1}{2} \sum\limits_{i=1}^{n} \sum\limits_{j=1}^{n} \alpha_i \alpha_j y_i y_j x_i^T x_j
 \end{equation}
 
@@ -23,7 +23,7 @@ The last term in this expression, $x_i^T x_j$, can be separated from the rest of
 
 \textbf{Kernelization} is a technique in SVM that uses kernel functions to transform data that can't be separated by a straight line into a higher dimensional space where a straight line can separate it.
 
-Using purely algebra, we can simplify equation 1 a bit. Let's take a closer look at the second term in our equation. This is what it looks like if we have a vector with three components:
+Using purely algebra, we can simplify equation \ref{eq:1} a bit. Let's take a closer look at the second term in our equation. This is what it looks like if we have a vector with three components:
 
 \[
 \sum\limits_{i=1}^{3} \sum\limits_{j=1}^{3} \alpha_i \alpha_j y_i y_j x_i x_j = \alpha_1\alpha_1y_1y_1x_1x_1 + \alpha_1\alpha_2y_1y_2x_1x_2 + ... + \alpha_3\alpha_3y_3y_3x_3x_3
@@ -44,7 +44,7 @@ Let's look at the Lagrange multipliers by themselves for this demonstration:
 
 Still using just algebra, we can rearrange and combine terms to rewrite each as $\alpha^2$. This pattern also applies to the $y$ and $x$ constants. Therefore, equation 1 can be rewritten as:
 
-\begin{equation}
+\begin{equation} \label{eq:2}
 f(\alpha) = \sum\limits_{i=1}^{n} \alpha_i - \frac{1}{2} \sum\limits_{i=1}^{n} \alpha_i^2 y_i^2 x_i^T x_j
 \end{equation}
 
@@ -73,11 +73,11 @@ where most components are equal to zero. With this definition, we can rewrite $f
 
 For some component in $\alpha$, let's call it $\alpha_k$, we can write $f(\alpha_k)$:
 
-\begin{equation}
+\begin{equation} \label{eq:3}
     f(\alpha_k) = \sum\limits_{i=1}^{n}\alpha_i - \frac{1}{2}\alpha_k^2 y_k^2 x_k^Tx_k - \alpha_k y_k \sum_{\substack{i=1 \\ i \ne k}}^n \alpha_i y_i x_i^Tx_k
 \end{equation}
 
-We do this reformatting because equation 3 will be easier to partially derive than equation 1. Now, our goal is to find $\nabla f'(\alpha) = \frac{\partial f}{\partial \alpha_k}$. Let's rewrite this equation to get something we can use. We are able to separate out a term with all of our variables with subscript $k$ because our summation specifies $i \ne k$ and jumps over $\alpha_k, y_k$ and $x_k$. Also, when we take the derivative of $\alpha^2$, we get $2\alpha$ which cancels out the factor of $\frac{1}{2}$:
+We do this reformatting because equation \ref{eq:3} will be easier to partially derive than equation \ref{eq:1}. Now, our goal is to find $\nabla f'(\alpha) = \frac{\partial f}{\partial \alpha_k}$. Let's rewrite this equation to get something we can use. We are able to separate out a term with all of our variables with subscript $k$ because our summation specifies $i \ne k$ and jumps over $\alpha_k, y_k$ and $x_k$. Also, when we take the derivative of $\alpha^2$, we get $2\alpha$ which cancels out the factor of $\frac{1}{2}$:
 
 \[
 \nabla f(\alpha_k) = 1 - \alpha_ky_k^2x_k^Tx_k - y_k \sum_{\substack{i=1 \\ i \ne k}}^n \alpha_i y_i x_i^Tx_k
