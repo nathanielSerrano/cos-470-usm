@@ -4,8 +4,6 @@
 %            : @james.quinlan
 %            : Nathaniel Serrano, Silas Qualls - Lecture 12
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-\pgfplotsset{compat=1.18}
-\usepgfplotslibrary{colormaps}
 
 \section*{Objectives}
 \begin{outline}
@@ -103,6 +101,10 @@ We can adjust this equation:
 \underline{\textbf{How?}}
 \begin{itemize}
     \item Scale components \textit{individually}
+    \begin{itemize}
+        \item Large gradients $\rightarrow$ small step
+        \item Small gradients $\rightarrow$ large step
+    \end{itemize}
     \item Hadamard Products
     \begin{itemize}
         \item Element-wise multiplication
@@ -202,7 +204,7 @@ Adam's update equations:
 m_{t+1} = \beta_1 m_t + (1-\beta_1)\nabla C(w) \\
 \]
 \[
-v_{t+1} = \beta+2 v+t + (1-\beta_2) \nabla C(w)^2
+v_{t+1} = \beta_2 v_t+t + (1-\beta_2) \nabla C(w)^2
 \]
 \begin{itemize}
     \item $C$ = cost $\equiv$ $L$ = loss
@@ -218,6 +220,9 @@ With initializations:
     \item m = 0
     \item w = 0 (Arbitrarily chosen; can be random)
 \end{itemize}
+In previous lectures we have seen multiple weight equations with gradients. In Adam, gradients have been bundled into $m$.
+\newline
+\newline
 We can make some slight changes to account for bias:
 \[
 \hat{m}_{t+1} = \frac{m_{t+1}}{1-\beta_1^t}
