@@ -8,8 +8,7 @@
 
 \begin{outline}
     \1 Math Review
-    \1 Backpropagation
-    
+    \1 Backpropagation 
 \end{outline}
 
 \rule[0.0051in]{\textwidth}{0.00025in}
@@ -113,7 +112,7 @@ f(g(x)) = f'(g(x)) \cdot g'(x)
 
 \[f(g(h(x)))=f'(g(h(x)) \cdot g'(h(x)) \cdot h'(x)\]
 
-\textbf{Exercise 4:} Find \( f'(x) \) given \(f(x) = (3x^2 - 5x = 6)^3\)
+\textbf{Exercise 4:} Find \( f'(x) \) given \(f(x) = (3x^2 - 5x + 6)^3\)
 
 \[ f(x) = x^3, \quad f'(x) = 3x^2\]
 \[ g(x) = 3x^2 -5x +6, \quad 6x - 5\]
@@ -164,7 +163,16 @@ we can take partial derivatives with respect to each variable:
 These partial derivatives together form the \textbf{gradient} of \(f\), which is a vector that points in the direction of the greatest rate of increase of the function. The gradient is denoted by \(\nabla f\) and defined as:
 
 \[
-\nabla f(x, y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle = \left\langle 3x^2, 6y \right\rangle.
+\nabla f(x, y) =
+\begin{bmatrix}
+    \frac{\partial f}{\partial x} \\
+    \frac{\partial f}{\partial y}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    3x^2 \\
+    6y
+\end{bmatrix}
 \]
 
 So, the gradient of a scalar function \(f(x, y)\) is a \textbf{vector-valued function} that contains all its first partial derivatives.
