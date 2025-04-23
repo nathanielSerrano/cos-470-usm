@@ -1,6 +1,5 @@
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-% SUMMARY    : Lecture 8 
-%            : The Perceptron , Hyperplane, Perceptron Algorithm, Definitions 
+% SUMMARY    : The Perceptron , Hyperplane, Perceptron Algorithm, Definitions 
 %              and Assumptions for model, Classifier equation, Class Code
 %            : University of Southern Maine 
 %            : @james.quinlan
@@ -274,20 +273,16 @@ Where:
     w = \mathbf{0} \quad \text{(weight vector initialized to zero)}, \quad b = 0 \quad \text{(bias initialized to zero)}.
     \]
     \1 \textbf{Algorithm Steps:}
-    \begin{enumerate}
         \2[1.] Set \( m = 1 \) (initially assuming there are misclassifications).
         \2[2.] \text{While } \( m > 0 \) \text{ (until no misclassifications)}:
         
-            \3[a. ] Set \( m = 0 \) (assume no misclassifications for this iteration).
-            \3[b. ] For each data point \( i = 1 \) to \( n \):
+            \3[(a). ] Set \( m = 0 \) (assume no misclassifications for this iteration).
+            \3[(b). ] For each data point \( i = 1 \) to \( n \):
             
-                \4[] If \( y_i (w^T x_i + b) \leq 0 \) (the point is misclassified):
+                \4 If \( y_i (w^T x_i + b) \leq 0 \) (the point is misclassified):
                 \4 Update the weight vector: 
                 \[
                 w = w + y_i x_i
                 \]
                 \4 Increment the misclassification count: \( m = m + 1 \)
 \end{outline}
-\end{minted}
-\bibliographystyle{plain}
-\bibliography{references}
